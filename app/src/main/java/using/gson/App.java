@@ -3,9 +3,54 @@
  */
 package using.gson;
 
+import com.google.gson.Gson;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+
+
 public class App {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
+        Gson gson = new Gson();
+        String path = "/home/owner/codefellows/using-gson/app/src/main/resources/quotes.json";
+        File file = new File(path);
+        FileReader reader = new FileReader(file);
+        Qoute[] qoutes = gson.fromJson(reader, Qoute[].class);
+        int max = qoutes.length;
+        int rand = (int)(Math.random()*max);
 
-    }
+        System.out.println( qoutes[rand]);
+
+
+
+
+        }
+
+//        public static String findQouteAuth( Qoute[] qoutes) {
+//
+//
+//            ArrayList<Qoute> tempQoutes = new ArrayList<>();
+//            int num = 0;
+//
+//            try {
+//
+//                for (Qoute q : qoutes) { // : = in
+//                    if(q.author.equals(author)) {
+//                        tempQoutes.add(q);
+//                    }
+//                }
+//
+//
+//
+//            }
+//            catch (Exception e){
+//                System.out.println("did Not work");
+//                e.printStackTrace();
+//            }
+//            return tempQoutes.get(num).toString();
+//        }
+
+
 }
