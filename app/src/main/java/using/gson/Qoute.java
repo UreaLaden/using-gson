@@ -1,32 +1,24 @@
 package using.gson;
 
-import java.util.*;
-
 public class Qoute {
     String author;
     String text;
-    ArrayList<String> tags = new ArrayList<>();
+    String quote;
 
-
-
-    public Qoute(String author, String text, ArrayList<String> tags) {
+    public Qoute(String author,String quote,String text) {
         this.author = author;
         this.text = text;
-        this.tags = tags;
+        this.quote = quote;
     }
-
-    public ArrayList<String> getTags() {
-        return tags;
-    }
-
 
 
     @Override
     public String toString() {
+
         return "Qoute{" +
                 "author='" + author + '\'' +
-                ", text='" + text + '\'' +
-                ", tags=" + tags +
+                ", quote= " + (text != null?text:"")  + '\'' +
+                (quote != null ? quote:"") + '\'' +
                 '}';
     }
 

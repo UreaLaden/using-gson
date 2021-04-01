@@ -3,20 +3,21 @@
  */
 package using.gson;
 
-
 import com.google.gson.Gson;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.Arrays;
 
 public class App {
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) throws IOException {
 
-        System.out.println(App.getQuote());
-        }
+        System.out.println(App.getQuoteFromJSON());
+//        getQuoteFromAPI();
+    }
 
-    public static String getQuote() throws FileNotFoundException {
+    public static String getQuoteFromJSON() throws FileNotFoundException {
         Gson gson = new Gson();
         String path = "/mnt/Ubuntu_Data/CodeFellows/Labs/java/using-gson/app/src/main/resources/quotes.json";
         File file = new File(path);
@@ -25,6 +26,27 @@ public class App {
         int max = qoutes.length;
         int rand = (int)(Math.random()*max);
         return qoutes[rand].toString();
+    }
+
+    public static void getQuoteFromAPI() throws IOException {
+        String starWarsURL = "https://swapi.dev/api/people/?search=r2";
+        String pokeUrl  = "https://pokeapi.co/api/v2/pokemon/ditto";
+        String programmerURL = "http://quotes.stormconsultancy.co.uk/popular.json";
+        URL url = new URL(programmerURL);
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        connection.setRequestMethod("GET");
+        System.out.println(connection);
+        InputStreamReader inputStreamReader = new InputStreamReader(connection.getInputStream());
+        System.out.println(inputStreamReader);
+        BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+        String jsonLine = bufferedReader.readLine();
+//        System.out.println(jsonLine);
+        Gson gson = new Gson();
+        Qoute[] results = gson.fromJson(jsonLine,Qoute[].class);
+        System.out.println(Arrays.toString(results));
+        System.out.println(results[0]);
+
+
     }
 
 }
