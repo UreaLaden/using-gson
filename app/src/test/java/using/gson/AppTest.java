@@ -3,10 +3,22 @@
  */
 package using.gson;
 
-//
-//public class AppTest {
-//    @Test public void testAppHasAGreeting() {
-//        App classUnderTest = new App();
-//        assertNotNull("app should have a greeting", classUnderTest.getGreeting());
-////    }
-//}
+
+import org.junit.Test;
+
+import java.io.FileNotFoundException;
+
+import static org.junit.Assert.assertTrue;
+
+public class AppTest {
+    @Test public void testRandomQuote() throws FileNotFoundException {
+        String expected = App.getQuote();
+        String actual = App.getQuote();
+        boolean isRandom = expected != actual;
+        System.out.println("Actual: " + actual);
+        System.out.println("Expected: " + expected);
+
+        assertTrue("Should generate a random quote",isRandom);
+    }
+
+}
