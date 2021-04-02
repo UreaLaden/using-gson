@@ -16,8 +16,6 @@ public class App {
         ArrayList<Qoute> quoteList = new ArrayList<>();
         quoteList = getQuotesFromJSON(quoteList);
         addToJSON(quoteList,getQuoteFromAPI());
-//        addToJSON(quoteList,getQuoteFromAPI());
-//        System.out.println(getQuoteFromAPI());
     }
 
     public static ArrayList<Qoute> getQuotesFromJSON(ArrayList<Qoute> quoteList){
