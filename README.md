@@ -8,6 +8,7 @@
 This application parses a .json file in order to display a random book quote.
 
 # How to run
+
 In the terminal run `./gradlew run`
 
 # Test Setup
