@@ -15,7 +15,7 @@ public class App {
 
 //        System.out.println(App.getQuoteFromAPI());// why do hate me correitio
 //        getQuoteFromAPI();
-        Qoute newQoute = new Qoute("jim","hello hello hello","never trust a fart");
+        Qoute newQoute = new Qoute("jim","hello hello hello","never trust a fart","tag1");
 
         System.out.println("hello world");
         addToJSON(newQoute);
