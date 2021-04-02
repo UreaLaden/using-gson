@@ -6,19 +6,20 @@ package using.gson;
 
 import org.junit.Test;
 
-import java.io.FileNotFoundException;
+import java.io.IOException;
 
-import static org.junit.Assert.assertTrue;
+//import java.io.FileNotFoundException;
 
 public class AppTest {
-    @Test public void testRandomQuote() throws FileNotFoundException {
-        String expected = App.getQuote();
-        String actual = App.getQuote();
-        boolean isRandom = expected != actual;
-        System.out.println("Actual: " + actual);
-        System.out.println("Expected: " + expected);
-
-        assertTrue("Should generate a random quote",isRandom);
+    @Test
+    public void testRandomQuote() throws IOException {
+//        String expected = App.getQuoteFromAPI();
+//        String actual = App.getQuoteFromAPI();
+//        boolean isRandom = expected != actual;
+        System.out.println(App.getQuoteFromAPI());
+//        System.out.println(App.getQuoteFromAPI());
+//
+//        assertTrue("Should generate a random quote",isRandom);
     }
 
 }

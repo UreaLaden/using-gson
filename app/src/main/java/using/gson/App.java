@@ -13,8 +13,14 @@ import java.util.Arrays;
 public class App {
     public static void main(String[] args) throws IOException {
 
-        System.out.println(App.getQuoteFromJSON());
+//        System.out.println(App.getQuoteFromAPI());// why do hate me correitio
 //        getQuoteFromAPI();
+        Qoute newQoute = new Qoute("jim","hello hello hello","never trust a fart");
+
+        System.out.println("hello world");
+        addToJSON(newQoute);
+
+
     }
 
     public static String getQuoteFromJSON() throws FileNotFoundException {
@@ -28,7 +34,7 @@ public class App {
         return qoutes[rand].toString();
     }
 
-    public static void getQuoteFromAPI() throws IOException {
+    public static <Quote> String getQuoteFromAPI() throws IOException {
         String starWarsURL = "https://swapi.dev/api/people/?search=r2";
         String pokeUrl  = "https://pokeapi.co/api/v2/pokemon/ditto";
         String programmerURL = "http://quotes.stormconsultancy.co.uk/popular.json";
@@ -45,8 +51,38 @@ public class App {
         Qoute[] results = gson.fromJson(jsonLine,Qoute[].class);
         System.out.println(Arrays.toString(results));
         System.out.println(results[0]);
+//        String res = results.toString();
 
+
+
+
+        return programmerURL;
+    }
+
+
+    public static void addToJSON(Qoute qoute) throws IOException {
+        Gson gson = new Gson();
+        String newPath = "/home/owner/codefellows/using-gson/app/src/main/resources/miniQuotes.json";
+//        ArrayList<Qoute> qouteArrayList = new  ArrayList<>();
+
+
+//        saveQuote = new Quote[] {new Qoute("jim","hello hello hello","never trust a fart")};
+        File file = new File(newPath );
+        try {
+            FileReader fileRead = new FileReader(file);
+            Qoute newQ = gson.fromJson(fileRead, Qoute.class);
+
+            System.out.println(newQ);
+        }
+        catch (Exception MalformedJsonException ){
+            System.out.println("dont work bro");
+        }
+        FileWriter fileWriter = new FileWriter(file,true);
+        gson.toJson(qoute, fileWriter);
+        fileWriter.close();
+//        System.out.println(qoute);
 
     }
+
 
 }
