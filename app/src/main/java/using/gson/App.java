@@ -68,7 +68,7 @@ public class App {
     }
 
 
-    public static void addToJSON(ArrayList<Qoute> quoteList,Qoute qoute){
+    public static ArrayList addToJSON(ArrayList<Qoute> quoteList,Qoute qoute){
         Gson gson = new Gson();
         String newPath = "/mnt/Ubuntu_Data/CodeFellows/Labs/java/using-gson/app/src/main/resources/miniQuotes.json";
         File file = new File(newPath );
@@ -82,7 +82,7 @@ public class App {
         {
             e.printStackTrace();
         }
-
+        return quoteList;
     }
 
 
